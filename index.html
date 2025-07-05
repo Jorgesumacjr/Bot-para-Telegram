@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Bot Telegram</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-robot"></i>
+                <h2>Bot Admin</h2>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item active">
+                    <a href="#dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#messages">
+                        <i class="fas fa-comment"></i>
+                        <span>Mensagens</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Configurações</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#logs">
+                        <i class="fas fa-list"></i>
+                        <span>Logs</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1>Painel Administrativo</h1>
+                    <p>Gerencie seu bot do Telegram</p>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicator">
+                        <span class="status-dot online"></span>
+                        <span>Bot Online</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>1,234</h3>
+                            <p>Usuários Ativos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>5,678</h3>
+                            <p>Mensagens Enviadas</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>99.9%</h3>
+                            <p>Uptime</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>+12%</h3>
+                            <p>Crescimento</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-actions">
+                    <h2>Ações Rápidas</h2>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar Mensagem
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-broadcast-tower"></i>
+                            Broadcast
+                        </button>
+                        <button class="btn btn-success">
+                            <i class="fas fa-download"></i>
+                            Exportar Dados
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Section -->
+            <section id="messages" class="content-section">
+                <div class="section-header">
+                    <h2>Gerenciar Mensagens</h2>
+                    <button class="btn btn-primary" onclick="openMessageModal()">
+                        <i class="fas fa-plus"></i>
+                        Nova Mensagem
+                    </button>
+                </div>
+
+                <div class="message-form">
+                    <div class="form-group">
+                        <label for="chatId">Chat ID:</label>
+                        <input type="text" id="chatId" placeholder="Digite o Chat ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="messageText">Mensagem:</label>
+                        <textarea id="messageText" rows="4" placeholder="Digite sua mensagem..."></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" onclick="sendMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                            Enviar
+                        </button>
+                        <button class="btn btn-secondary" onclick="clearForm()">
+                            <i class="fas fa-eraser"></i>
+                            Limpar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="recent-messages">
+                    <h3>Mensagens Recentes</h3>
+                    <div class="message-list">
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="chat-id">@usuario123</span>
+                                <span class="timestamp">2 min atrás</span>
+                            </div>
+                            <div class="message-content">
+                                Olá! Como posso ajudar?
+                            </div>
+                            <div class="message-status sent">
+                                <i class="fas fa-check"></i>
+                                Enviada
+                            </div>
+                        </div>
+                        <div class="message-item">
+                            <div class="message-header">
+                                <span class="chat-id">@usuario456</span>
+                                <span class="timestamp">5 min atrás</span>
+                            </div>
+                            <div class="message-content">
+                                Mensagem de teste para verificar o funcionamento do bot.
+                            </div>
+                            <div class="message-status sent">
+                                <i class="fas fa-check"></i>
+                                Enviada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings Section -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h2>Configurações do Bot</h2>
+                </div>
+
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="apiId">API ID:</label>
+                        <input type="text" id="apiId" placeholder="Digite o API ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="apiHash">API Hash:</label>
+                        <input type="password" id="apiHash" placeholder="Digite o API Hash">
+                    </div>
+                    <div class="form-group">
+                        <label for="botToken">Bot Token:</label>
+                        <input type="password" id="botToken" placeholder="Digite o Bot Token">
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn btn-primary" onclick="saveSettings()">
+                            <i class="fas fa-save"></i>
+                            Salvar Configurações
+                        </button>
+                        <button class="btn btn-secondary" onclick="testConnection()">
+                            <i class="fas fa-plug"></i>
+                            Testar Conexão
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bot-controls">
+                    <h3>Controles do Bot</h3>
+                    <div class="control-buttons">
+                        <button class="btn btn-success">
+                            <i class="fas fa-play"></i>
+                            Iniciar Bot
+                        </button>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-stop"></i>
+                            Parar Bot
+                        </button>
+                        <button class="btn btn-warning">
+                            <i class="fas fa-redo"></i>
+                            Reiniciar Bot
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Logs Section -->
+            <section id="logs" class="content-section">
+                <div class="section-header">
+                    <h2>Logs do Sistema</h2>
+                    <div class="log-controls">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-download"></i>
+                            Exportar Logs
+                        </button>
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-trash"></i>
+                            Limpar Logs
+                        </button>
+                    </div>
+                </div>
+
+                <div class="log-container">
+                    <div class="log-entry info">
+                        <span class="timestamp">[2024-01-15 14:30:25]</span>
+                        <span class="level">[INFO]</span>
+                        <span class="message">Bot iniciado com sucesso</span>
+                    </div>
+                    <div class="log-entry success">
+                        <span class="timestamp">[2024-01-15 14:30:26]</span>
+                        <span class="level">[SUCCESS]</span>
+                        <span class="message">Conexão com Telegram estabelecida</span>
+                    </div>
+                    <div class="log-entry warning">
+                        <span class="timestamp">[2024-01-15 14:31:15]</span>
+                        <span class="level">[WARNING]</span>
+                        <span class="message">Tentativa de reconexão</span>
+                    </div>
+                    <div class="log-entry error">
+                        <span class="timestamp">[2024-01-15 14:31:16]</span>
+                        <span class="level">[ERROR]</span>
+                        <span class="message">Erro na conexão com API</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
